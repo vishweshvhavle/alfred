@@ -1,7 +1,7 @@
 ![C++](https://img.shields.io/badge/C++-17-gold?logo=c%2B%2B)
 ![Python](https://img.shields.io/badge/Python-3.8-gold?logo=python)
 ![ROS Noetic](https://img.shields.io/badge/ROS-Noetic-blue?logo=ros)
-![Gazebo](https://img.shields.io/badge/simulator-Gazebo-blue?logo=gazebo)
+![Gazebo](https://img.shields.io/badge/Sim-Gazebo-blue?logo=gazebo)
 ![PyTorch](https://img.shields.io/badge/PyTorch-1.10-EE4C2C?logo=pytorch)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-20.04-E95420?logo=ubuntu)
 ![License](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative)
