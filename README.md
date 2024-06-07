@@ -44,8 +44,11 @@ To kill the simulation:
 ```shell
 $ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient python python3
 ```
-## 1. Install CPU Dependencies
+## 2. Install CPU Dependencies
 
+# Resources
+## 3D Printable Files
+## Links to Parts
 # Issues
 Please open Github issues for any installation/usage problems you run into.
 
@@ -55,7 +58,7 @@ If you find this code useful for your research, please consider citing:
 
 ```
 @inproceedings{alfred2024,
-    author = {Vishwesh and Jatin},
+    author = {Vishwesh Vhavle and Jatin Kumar Sharma},
     title = {Alfred UGV},
     year = {2024},
 }
