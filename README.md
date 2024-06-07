@@ -62,6 +62,8 @@ Main dependencies:
 
 ## For GPU Packages
 
+![GPU Packages](imgs/waypoint.png)
+
 Open a terminal and set up sources using the shortcut shell script (Ensure appropriate permissions are granted to the shell script):
 ```shell
 $ cd alfred/gpu-packages/sim/
@@ -77,6 +79,9 @@ $ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher g
 ```
 
 ## For CPU Packages
+
+![CPU Packages](imgs/slam.png)
+
 Open a terminal and set up sources with the ros master at GPU node:
 ```shell
 $ export ROS_HOSTNAME=gpu-node-ip
