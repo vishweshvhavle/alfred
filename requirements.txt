@@ -1,0 +1,12 @@
+pyserial
+pygame
+rospy
+rospkg
+opencv-python
+numpy
+pyrealsense2
+ultralytics
+cv-bridge
+open3d
+matplotlib
+scipy
