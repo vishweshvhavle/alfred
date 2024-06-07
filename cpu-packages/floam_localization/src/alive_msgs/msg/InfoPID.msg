@@ -1,0 +1,17 @@
+Header header
+Header input
+Header trajectory
+float64 desired_x
+float64 desired_y
+float64 curr_x
+float64 curr_y
+float64 curr_yaw
+float64 desired_v
+float64 curr_v
+float64 traj_v
+float64 e_x
+float64 e_y
+float64 e_theta
+float64 e_v
+float64 sum_e_d
+Control control

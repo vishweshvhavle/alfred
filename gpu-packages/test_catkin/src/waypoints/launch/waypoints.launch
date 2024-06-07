@@ -1,0 +1,6 @@
+<launch>
+    <!-- Node for robot_talker -->
+    <node name="waypoints" pkg="waypoints" type="waypoints.py" output="screen">
+        <!-- Any arguments or parameters can go here -->
+    </node>
+</launch>

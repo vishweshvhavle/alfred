@@ -1,0 +1,13 @@
+Header          header
+int64           id
+float64         x
+float64         y
+float64         z
+float64         yaw
+float64         pitch
+float64         roll
+std_msgs/String class_name
+float64         length
+float64         width
+float64         height
+int64           flag

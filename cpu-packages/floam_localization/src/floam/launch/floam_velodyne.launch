@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="load_map" default="full_campus.pcd"/>
+    <!-- Since we publish floam map only once, the delay ensures that rviz is opened before the map is published -->
+    <arg name="node_start_delay" default="15.0" />
+
+    <arg name="use_sim_time" default="false"/>
+    <arg name="lidarPoseTopic" default="/pose"/>
+    <arg name="lidarTopic" default="/velodyne_points"/>
+    <arg name="relocalization" default="true"/>
+    <!-- <arg name="gps_initialization" default="false"/> -->
+
+    <param name="lidarTopic" value="$(arg lidarTopic)" />
+    <param name="lidarPoseTopic" value="$(arg lidarPoseTopic)" />
+    <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>
+    <param name="mapFileName" type="str" value="$(find floam)/maps/$(arg load_map)"/>
+
+    <!-- Relocalization parameters -->
+    <param name="relocalization" type="bool" value="$(arg relocalization)"/>
+    <!-- <param name="gps_initialization" type="bool" value="$(arg gps_initialization)"/>
+    <param name="useImuYaw" type="bool" value="false"/>
+    <param name="use_actual_utm_no_offset" type="bool" value="false"/> -->
+    
+    <!-- VLP-16 Parameters-->
+    <param name="scan_line" value="16" />
+    <param name="scan_period" value="0.10" />
+    <param name="vertical_angle" type="double" value="1.0" />
+    <param name="map_resolution" type="double" value="0.35" />
+    <param name="max_dis" type="double" value="30.0" />
+    <param name="min_dis" type="double" value="0.5" />
+    <param name="ndt_transform_epsilon" type="double" value="0.01"/>
+    <param name="ndt_step_size" type="double" value="0.1"/>
+    <param name="ndt_resolution" type="double" value="0.1"/>
+    
+    <node pkg="floam" type="floam_odom_estimation_node"  name="floam_odom_estimation_node"  output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
+        <rosparam command="load" file="$(find floam)/resources/floam_odometry_params.yaml" />
+    </node>
+    <node pkg="floam" type="floam_laser_processing_node" name="floam_laser_processing_node" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
+        <rosparam command="load" file="$(find floam)/resources/lanelet_params.yaml" />
+    </node>
+
+    <arg name="rviz" default="true" />
+    <group if="$(arg rviz)">
+        <!-- <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find floam)/rviz/floam_velodyne.rviz" /> -->
+    </group>
+
+</launch>

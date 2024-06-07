@@ -1,0 +1,17 @@
+# x, y, z, roll, pitch, yaw
+# float[36]
+pose_covariance: [0.04, 0,    0,    0,    0,    0,
+                  0,    0.04, 0,    0,    0,    0,
+                  0,    0,    0.04, 0,    0,    0,
+                  0,    0,    0,    0.04, 0,    0,
+                  0,    0,    0,    0,    0.04, 0,
+                  0,    0,    0,    0,    0,    0.04]
+
+# velocity in x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis
+# float[36] do not use 1e-3 representation
+twist_covariance: [10.0, 0,    0,    0,    0,    0,
+                   0,    0.001, 0,    0,    0,    0,
+                   0,    0,    0.001, 0,    0,    0,
+                   0,    0,    0,    10.0, 0,    0,
+                   0,    0,    0,    0,    10.0, 0,
+                   0,    0,    0,    0,    0,    10.0]
