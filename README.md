@@ -1,64 +1,43 @@
 # Alfred UGV
 
-This is the official implementation of [Alfred UGV](https://instruct-nerf2nerf.github.io/).
+This is the official implementation of [Alfred UGV (Report)](https://drive.google.com/file/d/1xcbomTqWQFI5U3ZL3wshn6ydCLDhJ_Dn/view?usp=sharing).
 
 ![teaser](imgs/in2n_teaser.png)
 
 # Installation
 
-## 1. Install Nerfstudio dependencies
+## 1. Install GPU Dependencies
 
-Instruct-NeRF2NeRF is build on Nerfstudio and therefore has the same dependency reqirements. Specfically [PyTorch](https://pytorch.org/) and [tinycudann](https://github.com/NVlabs/tiny-cuda-nn) are required.
+Main dependencies: 
 
-Follow the instructions [at this link](https://docs.nerf.studio/quickstart/installation.html) to create the environment and install dependencies. Only follow the commands up to tinycudann. After the dependencies have been installed, return here.
+* [ROS Noetic](http://wiki.ros.org/noetic/Installation)
+* [PyTorch](https://pytorch.org/get-started/locally/)
 
-## 2. Installing Instruct-NeRF2NeRF
+The network can be run with a standard 2D laser, but this implementation uses a simulated [3D Velodyne sensor](https://github.com/lmark1/velodyne_simulator). This package was developed on top [DRL-Robot-Navigation](https://github.com/reiniscimurs/DRL-robot-navigation).
 
-Once you have finished installing dependencies, you can install Instruct-NeRF2NeRF using the following command:
-```bash
-pip install git+https://github.com/ayaanzhaque/instruct-nerf2nerf
+Compile the workspace:
+```shell
+$ cd ~/DRL-robot-navigation/catkin_ws
+### Compile
+$ catkin_make_isolated
 ```
 
-_Optional_: If you would like to work with the code directly, clone then install the repo:
-```bash
-git clone https://github.com/ayaanzhaque/instruct-nerf2nerf.git
-cd instruct-nerf2nerf
-pip install --upgrade pip setuptools
-pip install -e .
+Open a terminal and set up sources:
+```shell
+$ export ROS_HOSTNAME=localhost
+$ export ROS_MASTER_URI=http://localhost:11311
+$ export ROS_PORT_SIM=11311
+$ export GAZEBO_RESOURCE_PATH=~/DRL-robot-navigation/catkin_ws/src/multi_robot_scenario/launch
+$ source ~/.bashrc
+$ cd ~/DRL-robot-navigation/catkin_ws
+$ source devel_isolated/setup.bash
 ```
 
-## 3. Checking the install
-
-The following command should include `in2n` as one of the options:
-```bash
-ns-train -h
+To kill the simulation:
+```shell
+$ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient python python3
 ```
 
-# Using Instruct-NeRF2NeRF
-
-![teaser](imgs/in2n_pipeline.png)
-
-To edit a NeRF, you must first train a regular `nerfacto` scene using your data. To process your custom data, please refer to [this](https://docs.nerf.studio/quickstart/custom_dataset.html) documentation.
-
-Once you have your custom data, you can train your initial NeRF with the following command:
-
-```bash
-ns-train nerfacto --data {PROCESSED_DATA_DIR}
-```
-
-For more details on training a NeRF, see [Nerfstudio documentation](https://docs.nerf.studio/quickstart/first_nerf.html).
-
-Once you have fully trained your scene, the checkpoints will be saved to the `outputs` directory. Copy the path to the `nerfstudio_models` folder.
-
-To start training for editing the NeRF, run the following command:
-
-```bash
-ns-train in2n --data {PROCESSED_DATA_DIR} --load-dir {outputs/.../nerfstudio_models} --pipeline.prompt {"prompt"} --pipeline.guidance-scale 7.5 --pipeline.image-guidance-scale 1.5
-```
-
-The `{PROCESSED_DATA_DIR}` must be the same path as used in training the original NeRF. Using the CLI commands, you can choose the prompt and the guidance scales used for InstructPix2Pix.
-
-After the NeRF is trained, you can render the NeRF using the standard Nerfstudio workflow, found [here](https://docs.nerf.studio/quickstart/viewer_quickstart.html).
 
 ## Training Notes
 
@@ -79,27 +58,8 @@ Our method uses ~16K rays and LPIPS, but not all GPUs have enough memory to run 
 
 Currently, we set the max number of iterations for `in2n` training to be 15k iteratios. Most often, the edit will look good after ~10k iterations. If you would like to train for longer, just reload your last `in2n` checkpoint and continue training, or change `--max-num-iterations 30000`.
 
-## Tips
-
-If your edit isn't working as you desire, it is likely because InstructPix2Pix struggles with your images and prompt. We recommend taking one of your training views and trying to edit it in 2D first with InstructPix2Pix, which can be done at [this](https://huggingface.co/spaces/timbrooks/instruct-pix2pix) HuggingFace space. More tips on getting a good edit can be found [here](https://github.com/timothybrooks/instruct-pix2pix#tips).
-
-# Extending Instruct-NeRF2NeRF
-
-We built an extension of Instruct-NeRF2NeRF for Gaussian Splatting called [Instruct-GS2GS](https://instruct-gs2gs.github.io/). Their [repository](https://github.com/cvachha/instruct-gs2gs) can be used as an example of how to build future projects based on Instruct-NeRF2NeRF.
-
-### Issues
-Please open Github issues for any installation/usage problems you run into. We've tried to support as broad a range of GPUs as possible, but it might be necessary to provide even more low-footprint versions. Please contribute with any changes to improve memory usage!
-
-### Code structure
-To build off Instruct-NeRF2NeRF, we provide explanations of the core code components.
-
-`in2n_datamanager.py`: This file is almost identical to the `base_datamanager.py` in Nerfstudio. The main difference is that the entire dataset tensor is pre-computed in the `setup_train` method as opposed to being sampled in the `next_train` method each time.
-
-`in2n_pipeline.py`: This file builds on the pipeline module in Nerfstudio. The `get_train_loss_dict` method samples images and places edited images back into the dataset.
-
-`ip2p.py`: This file houses the InstructPix2Pix model (using the `diffusers` implementation). The `edit_image` method is where an image is denoised using the diffusion model, and a variety of helper methods are contained in this file as well.
-
-`in2n.py`: We overwrite the `get_loss_dict` method to use LPIPs loss and L1Loss.
+# Issues
+Please open Github issues for any installation/usage problems you run into.
 
 # Citation
 
