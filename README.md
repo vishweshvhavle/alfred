@@ -109,11 +109,11 @@ $ rosloaunch floam_mapping
 ```
 
 # Resources
-## Links to 3D Printable Files
-(Coming Soon)
+## Links to 3D Printable Files, PCB Gerbers and Designs for Laser Cutting
+[Google Drive Link](https://drive.google.com/drive/folders/1f_hGOYu5EU9SzpqOJjtLgKvULTiSWQi8?usp=sharing)
 
 ## Links to Parts
-(Coming Soon)
+[Google Sheets Link](https://docs.google.com/spreadsheets/d/1cG-RGQtmP1Nn3f39VJRI02Kv2sMw9BhIGyV3ISFxt6U/edit?usp=sharing)
 
 # Issues
 Please open Github issues for any installation/usage problems you run into.
