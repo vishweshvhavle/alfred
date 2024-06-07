@@ -1,3 +1,5 @@
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)]([https://pypi.org/project/ultralytics/](https://github.com/vishweshvhavle/alfred/))
+
 # Alfred UGV
 
 This is the official implementation of [Alfred UGV (Report)](https://drive.google.com/file/d/1xcbomTqWQFI5U3ZL3wshn6ydCLDhJ_Dn/view?usp=sharing).
