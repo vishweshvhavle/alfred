@@ -1,4 +1,8 @@
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)]([https://pypi.org/project/ultralytics/](https://github.com/vishweshvhavle/alfred/))
+![C++](https://img.shields.io/badge/language-C++-blue)
+![Python](https://img.shields.io/badge/language-Python-blue)
+![ROS Noetic](https://img.shields.io/badge/ROS-Noetic-blue)
+![Gazebo](https://img.shields.io/badge/simulator-Gazebo-blue)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 # Alfred UGV
 
