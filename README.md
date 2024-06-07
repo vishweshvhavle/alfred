@@ -97,7 +97,9 @@ $ python3 detection.py
 
 For F-LOAM based localization and mapping:
 ```shell
-$ source
+$ cd alfred/cpu-packages/floam_mapping
+$ catkin build
+$ source devel/setup.bash
 $ rosloaunch floam_mapping
 ```
 
