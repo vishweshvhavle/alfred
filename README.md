@@ -1,8 +1,8 @@
-![C++](https://img.shields.io/badge/language-C++-blue)
-![Python](https://img.shields.io/badge/language-Python-blue)
-![ROS Noetic](https://img.shields.io/badge/ROS-Noetic-blue)
-![Gazebo](https://img.shields.io/badge/simulator-Gazebo-blue)
-![License](https://img.shields.io/badge/license-MIT-blue)
+![C++](https://img.shields.io/badge/language-C++-blue?logo=c%2B%2B)
+![Python](https://img.shields.io/badge/language-Python-blue?logo=python)
+![ROS Noetic](https://img.shields.io/badge/ROS-Noetic-blue?logo=ros)
+![Gazebo](https://img.shields.io/badge/simulator-Gazebo-blue?logo=gazebo)
+![License](https://img.shields.io/badge/license-MIT-blue?logo=open-source-initiative)
 
 # Alfred UGV
 
