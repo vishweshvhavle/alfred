@@ -139,11 +139,6 @@ Thanks to Koustubh Heblikar for designing Alfred's chassis.
 If you find this code useful for your research, please consider citing:
 
 ```
-@inproceedings{alfred2024,
-    author = {Vishwesh Vhavle and Jatin Kumar Sharma},
-    title = {Alfred UGV},
-    year = {2024},
-}
 @misc{alfred_2024,
   author       = {Vishwesh Vhavle and Jatin Kumar Sharma},
   title        = {Alfred UGV},
