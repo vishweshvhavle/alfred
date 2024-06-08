@@ -75,11 +75,6 @@ $ python3 waypoints.py
 $ python3 path_planning_node.py
 ```
 
-To kill the simulation:
-```shell
-$ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient python python3
-```
-
 ## For CPU Packages
 
 ![CPU Packages](imgs/slam.png)
