@@ -104,20 +104,20 @@ $ catkin_make
 $ source devel/setup.bash
 ```
 Launch ROS
-```
+```shell
 roslaunch floam floam.launch
 ```
 If you would like to create the map at the same time, you can run (more cpu cost)
-```
+```shell
 roslaunch floam floam_mapping.launch
 ```
 You may wish to test FLOAM on your own platform and sensor such as VLP-16
 You can install the velodyne sensor driver by 
-```
+```shell
 sudo apt-get install ros-noetic-velodyne-pointcloud
 ```
-Launch floam for your own velodyne sensor
-```
+Launch FLOAM for your own Velodyne sensor
+```shell
 roslaunch floam floam_velodyne.launch
 ```
 
@@ -130,6 +130,9 @@ roslaunch floam floam_velodyne.launch
 
 # Issues
 Please open Github issues for any installation/usage problems you run into.
+
+# Acknowledgements
+Thanks to Koustubh Heblikar for designing Alfred's chassis.
 
 # Citation
 
