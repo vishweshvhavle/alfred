@@ -57,6 +57,8 @@ Main dependencies:
 
 * [ROS Noetic](http://wiki.ros.org/noetic/Installation)
 * [PyTorch](https://pytorch.org/get-started/locally/) (CPU Version)
+* [Ceres Installation](http://ceres-solver.org/installation.html).
+* [PCL Installation](http://www.pointclouds.org/downloads/linux.html).
 
 # How to Run
 
@@ -102,10 +104,26 @@ $ python3 detection.py
 
 For F-LOAM based localization and mapping:
 ```shell
-$ cd alfred/cpu-packages/floam_mapping
-$ catkin build
+$ cd alfred/cpu-packages/floam
+$ catkin_make
 $ source devel/setup.bash
-$ rosloaunch floam_mapping
+```
+Launch ROS
+```
+roslaunch floam floam.launch
+```
+If you would like to create the map at the same time, you can run (more cpu cost)
+```
+roslaunch floam floam_mapping.launch
+```
+You may wish to test FLOAM on your own platform and sensor such as VLP-16
+You can install the velodyne sensor driver by 
+```
+sudo apt-get install ros-noetic-velodyne-pointcloud
+```
+Launch floam for your own velodyne sensor
+```
+roslaunch floam floam_velodyne.launch
 ```
 
 # Resources
@@ -128,4 +146,12 @@ If you find this code useful for your research, please consider citing:
     title = {Alfred UGV},
     year = {2024},
 }
+@misc{alfred_2024,
+  author       = {Vishwesh Vhavle and Jatin Kumar Sharma},
+  title        = {Alfred UGV},
+  year         = {2024},
+  url          = {https://github.com/vishweshvhavle/alfred},
+  note         = {Version 1.0.0}
+}
+
 ```
